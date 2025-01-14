@@ -1,8 +1,9 @@
 package frc.robot;
 
 import com.pathplanner.lib.config.PIDConstants;
-
+import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.LEDPattern;
 
 public final class Constants {
     public static final class Swerve {
@@ -27,6 +28,17 @@ public final class Constants {
 
     }
 
+    public static final class LedSubsystem{
+        public final int LED_PWM_PORT = 0;
+        public final int LED_LEGNTH = 60; //Default
+        public static final LEDPattern RED_ALLIANCE_COLOR = LEDPattern.solid(Color.kRed);
+        public static final LEDPattern BLUE_ALLIANCE_COLOR = LEDPattern.solid(Color.kBlue);
+        public static final LEDPattern ELEVATOR_PROCESS_COLOR = LEDPattern.solid(Color.kPurple);
+        public static final LEDPattern TARGET_FOCUS_COLOR = LEDPattern.solid(Color.kGreen);
+        public static final LEDPattern INTAKE_COLOR = LEDPattern.solid(Color.kYellow);
+        public static final LEDPattern BREATHE_COLOR = LEDPattern.solid(Color.kWhite);
+    }
+
     public static final class Elevator{
         //TODO Encoder Values Wİll Be Updated
         public static final double ELEVATOR_START_VALUE = 0; //Generally True
@@ -46,6 +58,7 @@ public final class Constants {
         public static boolean IS_TEST = false;
         public static boolean IS_PROCESSING = false;
         public static boolean IS_PID_ENDED = false;
+        public static boolean IS_SWERVE_FOCUSED = false;
     }
 
     public static final class SwervePorts {
