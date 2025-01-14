@@ -30,8 +30,8 @@ public final class Constants {
     }
 
     public static final class LedSubsystem{
-        public final int LED_PWM_PORT = 0;
-        public final int LED_LEGNTH = 60; //Default
+        public static final int LED_PWM_PORT = 0;
+        public static final int LED_LEGNTH = 60; //Default
         public static final LEDPattern RED_ALLIANCE_COLOR = LEDPattern.solid(Color.kRed);
         public static final LEDPattern BLUE_ALLIANCE_COLOR = LEDPattern.solid(Color.kBlue);
         public static final LEDPattern ELEVATOR_PROCESS_COLOR = LEDPattern.solid(Color.kPurple);
