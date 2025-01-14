@@ -26,6 +26,7 @@ public final class Constants {
         public static final PIDConstants TRANSLATION_PID = new PIDConstants(5.0,0.0,0.0);
         public static final PIDConstants ROTATION_PID = new PIDConstants(5.0,0.0,0.0);
 
+        public static final double LIMELIGHT_ALIGN_KP = 0.35;
     }
 
     public static final class LedSubsystem{

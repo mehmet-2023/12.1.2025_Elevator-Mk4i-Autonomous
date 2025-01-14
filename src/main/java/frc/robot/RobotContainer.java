@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.OI;
+import frc.robot.commands.Swerve.LimelightAimCommand;
 import frc.robot.commands.Elevator.e_level1;
 import frc.robot.commands.Elevator.e_level2;
 import frc.robot.commands.Elevator.e_level3;
@@ -23,14 +24,18 @@ public class RobotContainer {
     private final SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
     private final ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem();
     public final CommandXboxController driverController = new CommandXboxController(OI.DRIVER_CONTROLLER_PORT);
+
     public final AutonPath otonom_path = new AutonPath();
     public final FollowTrajectoryCommand otonom = new FollowTrajectoryCommand(swerveSubsystem);
+
     public final e_movedown elevator_down;
     public final e_moveup elevator_up;
     public final e_reefscape reefscape;
     public final e_level1 l1;
     public final e_level2 l2;
     public final e_level3 l3;
+
+    public final LimelightAimCommand limelight_focus;
 
     public RobotContainer() {
         elevator_down = new e_movedown(elevatorSubsystem);
@@ -40,6 +45,8 @@ public class RobotContainer {
         l1 = new e_level1(elevatorSubsystem);
         l2 = new e_level2(elevatorSubsystem);
         l3 = new e_level3(elevatorSubsystem);
+
+        limelight_focus = new LimelightAimCommand(swerveSubsystem);
 
         configureButtonBindings();
 

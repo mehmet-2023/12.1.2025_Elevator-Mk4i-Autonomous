@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.Swerve;
 import frc.robot.Constants.SwervePorts;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.LimelightHelpers;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 //import com.pathplanner.lib.config.PIDConstants;
@@ -140,7 +141,7 @@ public class SwerveSubsystem extends SubsystemBase {
 
     //TODO Not Sure
 
-    private void driveRobotRelative(ChassisSpeeds speeds) {
+    public void driveRobotRelative(ChassisSpeeds speeds) {
         // Calculate the desired states for each swerve module based on the provided chassis speeds
         SwerveModuleState[] swerveModuleStates = kinematics.toSwerveModuleStates(speeds);
         // Normalize wheel speeds to ensure no module exceeds the maximum speed (e.g., 3.0 m/s)
@@ -220,6 +221,14 @@ public class SwerveSubsystem extends SubsystemBase {
             SmartDashboard.putString("BR Desired State", swerveModuleStates[3].toString());
         });
 
+    }
+
+    public double CalculateLimelightAim(){
+        double kMaxAngularSpeed = Swerve.MAX_SPEED_METERS_PER_SECOND / Math.hypot(0.3, 0.3);//TODO Kinematics Will Be Entered
+        double targetingAngularVelocity = LimelightHelpers.getTX("limelight") * Swerve.LIMELIGHT_ALIGN_KP;
+        targetingAngularVelocity *= kMaxAngularSpeed;
+        targetingAngularVelocity *= -1.0;
+        return targetingAngularVelocity;
     }
 
 //WORK OF ART
