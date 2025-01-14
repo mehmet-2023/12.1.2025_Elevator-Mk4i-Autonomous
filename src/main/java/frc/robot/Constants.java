@@ -13,7 +13,7 @@ public final class Constants {
         public static final double DRIVE_GEAR_RATIO = 8.14; // MK4i Standard
         public static final double STEER_GEAR_RATIO = 12.8; // MK4i Standard
         public static final double MAX_ACCELERATION_METERS_PER_SECOND_SQUARED = 3.5;
-
+        
         public static final double FRONT_LEFT_MODULE_DRIVE_OFFSET = 0;
         public static final double FRONT_LEFT_MODULE_STEER_OFFSET = 0;
         public static final double FRONT_RIGHT_MODULE_DRIVE_OFFSET = 0;
@@ -30,8 +30,8 @@ public final class Constants {
     }
 
     public static final class LedSubsystem{
-        public final int LED_PWM_PORT = 0;
-        public final int LED_LEGNTH = 60; //Default
+        public static final int LED_PWM_PORT = 0;
+        public static final int LED_LEGNTH = 60; //Default
         public static final LEDPattern RED_ALLIANCE_COLOR = LEDPattern.solid(Color.kRed);
         public static final LEDPattern BLUE_ALLIANCE_COLOR = LEDPattern.solid(Color.kBlue);
         public static final LEDPattern ELEVATOR_PROCESS_COLOR = LEDPattern.solid(Color.kPurple);
@@ -60,6 +60,7 @@ public final class Constants {
         public static boolean IS_PROCESSING = false;
         public static boolean IS_PID_ENDED = false;
         public static boolean IS_SWERVE_FOCUSED = false;
+        public static String LIMELIGHT_NAME = "limelight";
     }
 
     public static final class SwervePorts {

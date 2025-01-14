@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.SwerveSubsystem;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import frc.robot.LimelightHelpers;
+import frc.robot.Constants.OI;
 
 public class LimelightAimCommand extends Command {
 
@@ -17,7 +18,7 @@ public class LimelightAimCommand extends Command {
 
     @Override
     public void initialize() {
-        System.out.println("Limelight Focus Başladı");
+        System.out.println("Limelight Focus Started");
     }
 
     @Override
@@ -30,12 +31,12 @@ public class LimelightAimCommand extends Command {
     @Override
     public void end(boolean interrupted) {
         swerveSubsystem.driveRobotRelative(new ChassisSpeeds(0.0, 0.0, 0.0));
-        System.out.println("Limelight Focus Bitti");
+        System.out.println("Limelight Focus Ended");
     }
 
     @Override
     public boolean isFinished() {
-        double tx = LimelightHelpers.getTX("limelight");
+        double tx = LimelightHelpers.getTX(OI.LIMELIGHT_NAME);
         return Math.abs(tx) < TOLERANCE;
     }
 }

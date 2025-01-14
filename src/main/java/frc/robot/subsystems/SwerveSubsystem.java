@@ -9,6 +9,7 @@ import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.OI;
 import frc.robot.Constants.Swerve;
 import frc.robot.Constants.SwervePorts;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -223,14 +224,28 @@ public class SwerveSubsystem extends SubsystemBase {
 
     }
 
+
+
     public double CalculateLimelightAim(){
         double kMaxAngularSpeed = Swerve.MAX_SPEED_METERS_PER_SECOND / Math.hypot(0.3, 0.3);//TODO Kinematics Will Be Entered
-        double targetingAngularVelocity = LimelightHelpers.getTX("limelight") * Swerve.LIMELIGHT_ALIGN_KP;
+        double targetingAngularVelocity = LimelightHelpers.getTX(OI.LIMELIGHT_NAME) * Swerve.LIMELIGHT_ALIGN_KP;
         targetingAngularVelocity *= kMaxAngularSpeed;
         targetingAngularVelocity *= -1.0;
         return targetingAngularVelocity;
     }
 
+
+
+    public void checkFocus(){
+        if(Math.abs(LimelightHelpers.getTX(OI.LIMELIGHT_NAME)) < 0.5){
+            OI.IS_SWERVE_FOCUSED = true;
+        } else{
+            OI.IS_SWERVE_FOCUSED = false;
+        }
+    }
+
+
+    
 //WORK OF ART
 
     private SwerveModuleState applySecondOrderKinematics(SwerveModuleState state) {
@@ -259,8 +274,7 @@ public class SwerveSubsystem extends SubsystemBase {
             }
         );
 
-
-
+        checkFocus();
         SmartDashboard.putString("Odometry Pose", odometry.getPoseMeters().toString());
         SmartDashboard.putNumber("Gyro Yaw", currentYaw);
         SmartDashboard.putString("FL Position", frontLeft.getPosition().toString());

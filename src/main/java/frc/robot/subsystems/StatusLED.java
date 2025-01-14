@@ -17,8 +17,8 @@ public class StatusLED extends SubsystemBase {
 	public LEDPattern pattern;
 
 	public StatusLED() {
-		led = new AddressableLED(0);//PWM Port
-		buffer = new AddressableLEDBuffer(0);//Led Length
+		led = new AddressableLED(LedSubsystem.LED_PWM_PORT);//PWM Port
+		buffer = new AddressableLEDBuffer(LedSubsystem.LED_LEGNTH);//Led Length
 	}
 
 	public void setDefault(){
